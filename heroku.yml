@@ -1,5 +1,5 @@
 build:
     docker:
         web: Dockerfile
-    run:
-        web: "rails server -b 0.0.0.0"
+run:
+    web: "rails server -b 0.0.0.0"
