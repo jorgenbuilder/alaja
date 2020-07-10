@@ -1,0 +1,42 @@
+<%= form_with(model: audio_recording, local: true) do |form| %>
+  <% if audio_recording.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(audio_recording.errors.count, "error") %> prohibited this audio_recording from being saved:</h2>
+
+      <ul>
+        <% audio_recording.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text_log %>
+    <%= form.text_field :text_log %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file_url %>
+    <%= form.text_field :file_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :audio_files %>
+    <%= form.file_field :audio_files, multiple: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

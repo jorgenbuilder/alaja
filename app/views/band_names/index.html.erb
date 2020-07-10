@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Band Names</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @band_names.each do |band_name| %>
+      <tr>
+        <td><%= band_name.name %></td>
+        <td><%= band_name.date %></td>
+        <td><%= link_to 'Show', band_name %></td>
+        <td><%= link_to 'Edit', edit_band_name_path(band_name) %></td>
+        <td><%= link_to 'Destroy', band_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Band Name', new_band_name_path %>

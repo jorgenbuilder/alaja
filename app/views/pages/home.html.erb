@@ -1,0 +1,25 @@
+<h1><%= @band_name.name %></h1>
+
+<p>
+  Is this our band name?
+  <%= link_to 'No, that\'s not our band name.', new_band_name_path %>
+</p>
+
+<h2>Sessions</h2>
+<% @sessions.first(10).each do |session| %>
+  <h3><%= session.date.strftime("%B %d, %Y") %></h3>
+  <h4>Notes</h4>
+  <%= session.text_log %>
+  <h4>Recordings (<%= session.audio_files.count %>)</h4>
+  <% session.audio_files.all.each do |audio_file| %>
+    <h3><%= audio_file.filename %></h3>
+    <audio controls>
+      <source src="<%= url_for(audio_file) %>" type="<%= audio_file.content_type %>">
+    </audio>
+  <% end %>
+  <hr>
+<% end %>
+
+<p>
+  <%= link_to 'New Session', new_session_path %>
+</p>

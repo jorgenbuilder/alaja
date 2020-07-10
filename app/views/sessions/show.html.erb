@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text log:</strong>
+  <%= @session.text_log %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @session.date %>
+</p>
+
+<h2>Recordings (<%= @session.audio_files.count %>)</h2>
+<% @session.audio_files.all.each do |audio_file| %>
+  <h3><%= audio_file.filename %></h3>
+  <audio controls>
+    <source src="<%= url_for(audio_file) %>" type="<%= audio_file.content_type %>">
+  </audio>
+<% end %>
+
+<%= link_to 'Edit', edit_session_path(@session) %> |
+<%= link_to 'Back', sessions_path %>

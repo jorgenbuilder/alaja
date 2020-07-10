@@ -1,0 +1,32 @@
+<%= form_with(model: session, local: true) do |form| %>
+  <% if session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(session.errors.count, "error") %> prohibited this session from being saved:</h2>
+
+      <ul>
+        <% session.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :text_log %>
+    <%= form.text_area :text_log %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :audio_files %>
+    <%= form.file_field :audio_files, multiple: true, direct_upload: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

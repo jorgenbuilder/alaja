@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+    web:
+        container_name: alaja-web
+        command: rails s -b 0.0.0.0
+        build:
+            context: .
+        volumes:
+            - ./:/alaja-web/
+        ports:
+            - "3000:3000"
+            - "3035:3035"
+        depends_on:
+            - postgres
+    postgres:
+        container_name: alaja-postgres
+        image: postgres:9.6
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: alaja
+            POSTGRES_PASSWORD: alajapw
+            POSTGRES_DB: alaja
+
+volumes:
+    postgres-data:
