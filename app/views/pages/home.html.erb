@@ -14,7 +14,7 @@
   <% session.audio_files.all.each do |audio_file| %>
     <h3><%= audio_file.filename %></h3>
     <audio controls>
-      <source src="<%= url_for(audio_file) %>" type="<%= audio_file.content_type %>">
+      <source src="<%= url_for(audio_file) %>" type="<%= audio_file.content_type %>" preload="auto">
     </audio>
   <% end %>
   <hr>
