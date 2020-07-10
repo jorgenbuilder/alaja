@@ -61,4 +61,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::FileUpdateChecker
 
   config.hosts << "alaja.local"
+  config.hosts << "alaja.herokuapp.com"
+  config.hosts << "alaja.band"
 end
