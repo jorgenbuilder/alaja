@@ -13,9 +13,7 @@
   <h4>Recordings (<%= session.audio_files.count %>)</h4>
   <% session.audio_files.all.each do |audio_file| %>
     <h3><%= audio_file.filename %></h3>
-    <audio controls>
-      <source src="<%= url_for(audio_file) %>" type="<%= audio_file.content_type %>" preload="auto">
-    </audio>
+    <%= react_component("AudioPlayer", {filename: audio_file.filename, url: audio_file.service_url}) %>
   <% end %>
   <hr>
 <% end %>
