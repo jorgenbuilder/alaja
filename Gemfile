@@ -54,3 +54,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'aws-sdk-s3', require: false
+gem "react-rails", "~> 2.6"
+
+gem "babel", "~> 0.1.4"
+
+gem "hoe", "~> 3.22"
+
+gem "active_model_serializers", "~> 0.10.10"
