@@ -1,0 +1,94 @@
+.AudioPlayer {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.AudioPlayer__track {
+    position: relative;
+    height: 100px;
+    background: rgb(255, 222, 245);
+    overflow: hidden;
+}
+.AudioPlayer__track__progress {
+    position: absolute;
+    right: 100%;
+    width: 100%; height: 100%;
+    background: rgba(black, .1);
+}
+.AudioPlayer__track__playhead {
+    width: 3px; height: 100%;
+    background: rgb(87, 0, 65);
+    position: absolute;
+    right: 0;
+}
+
+.AudioPlayer__monitors {
+    display: none;  // flex;
+    flex-direction: row;
+    height: 62px;
+    background: rgb(255, 222, 245);
+}
+.AudioPlayer__monitors__frq {}
+.AudioPlayer__monitors__vol {}
+.AudioPlayer__monitors__bpm {}
+
+.AudioPlayer__controls {
+    display: flex;
+    flex-direction: row;
+    height: 38px;
+    background: rgb(255, 222, 245);
+    color: rgb(87, 0, 65);
+}
+.AudioPlayer__controls__button {
+    width: 38px; height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0);
+    transition: background 250ms linear;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.62);
+    }
+}
+.AudioPlayer__controls__playpause {}
+.AudioPlayer__controls__stop {}
+.AudioPlayer__controls__backward {}
+.AudioPlayer__controls__forward {}
+.AudioPlayer__controls__volume {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    max-width: 300px;
+    padding-right: 25px;
+}
+.AudioPlayer__controls__volume__slider {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.AudioPlayer__controls__volume__slider__track {
+    position: absolute;
+    top: 50%;
+    width: 100%; height: 2px;
+    margin-top: -1px;
+    background: rgb(87, 0, 65);
+}
+.AudioPlayer__controls__volume__slider__bar {
+    position: absolute;
+    right: 100%;
+    width: 100%; height: 100%;
+}
+.AudioPlayer__controls__volume__slider__scrubber {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 16px; height: 16px;
+    margin-top: -8px;
+    border-radius: 50%;
+    background: rgb(87, 0, 65);
+}
