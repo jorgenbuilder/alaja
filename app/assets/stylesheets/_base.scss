@@ -1,5 +1,7 @@
 @import 'vars';
+@import 'normalize.css/normalize.css';
 
 html {
     background-color: $colour-regal;
+    padding: 100px;
 }

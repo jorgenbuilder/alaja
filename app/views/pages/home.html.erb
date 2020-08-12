@@ -1,14 +1,11 @@
-<h1><%= @band_name.name %></h1>
-
-<p>
-  Is this our band name?
-  <%= link_to 'No, that\'s not our band name.', new_band_name_path %>
+<h1 class="brand"><%= @band_name.name %></h1>
+<p class="big">
+  We are some friends that play mostly Strokes covers. This is our scrapbook and a tool for self improvement.
 </p>
 
-<h2>Sessions</h2>
 <% @sessions.first(10).each do |session| %>
-  <h3><%= session.date.strftime("%B %d, %Y") %></h3>
-  <h4>Notes</h4>
+
+  <h2><%= session.date.strftime("%B %d, %Y") %> Session</h2>
   <%= session.text_log %>
   <h4>Recordings (<%= session.audio_files.count %>)</h4>
   <% session.audio_files.all.each do |audio_file| %>

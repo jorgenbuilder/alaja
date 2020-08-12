@@ -1,12 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@531&family=Rubik+Mono+One&family=Teko:wght@700&display=swap');
+@import 'vars';
+@import url(https://fonts.googleapis.com/css2?family=Epilogue:wght@531&family=Rubik+Mono+One&family=Teko:wght@700&display=swap);
 
 // font-family: 'Epilogue', sans-serif;
 // font-family: 'Rubik Mono One', sans-serif;
 // font-family: 'Teko', sans-serif;
 
+
+html, body {
+    color: white;
+    font-family: 'Epilogue', sans-serif;
+    font-size: 20px;
+}
+
 .brand {
+    color: $colour-heat;
     font-family: 'Teko', sans-serif;
     font-size: 180px;
-    font-weight: bold;
+    font-weight: 700;
     line-height: 145px;
+    text-transform: uppercase;
+}
+
+h1, h2, h3, h4, h5 {
+    color: $colour-energy;
+    font-family: 'Rubik Mono One', sans-serif;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 62px;
+    margin: 80px 0 30px;
+}
+
+p.big {
+    font-size: 24px;
+}
+
+p {
+    max-width: 45em;
+    line-height: 150%;
 }
