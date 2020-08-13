@@ -1,0 +1,10 @@
+@import 'vars';
+
+.button {
+    display: inline-block;
+    color: white;
+    background-color: $colour-heat;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    border-radius: 4px;
+}

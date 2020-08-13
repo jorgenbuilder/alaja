@@ -1,0 +1,91 @@
+@import 'vars';
+
+.AudioPlayer.v2 {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+
+    background-color: $colour-w4;
+
+    font-family: 'Share Tech Mono', monospace;
+
+    .AudioPlayer__main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .AudioPlayer__main__group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .AudioPlayer__main__play {
+        width: 90px;
+        height: 90px;
+        background: $colour-w1 image-url('Play.svg') center center no-repeat;
+    }
+
+    .AudioPlayer__main__info {
+        margin-left: 20px;
+
+        .AudioPlayer__main__title {
+            font-size: 24px;
+            line-height: 100%;
+        }
+
+        .AudioPlayer__main__timestamp {
+            color: $colour-w3;
+            font-size: 16px;
+            line-height: 1;
+        }
+    }
+
+    .AudioPlayer__main__vol {
+        position: relative;
+        width: 240px;
+        height: 32px;
+        margin-right: 20px;
+    }
+
+    .AudioPlayer__main__vol__track {
+        width: 100%;
+        height: 4px;
+        margin-top: 14px;
+        background-color: #353331;
+    }
+
+    .AudioPlayer__main__vol__handle {
+        position: absolute;
+        top: 0;
+        width: 8px;
+        height: 32px;
+        background-color: $colour-w1;
+    }
+
+    .AudioPlayer__playbed {
+        position: relative;
+    }
+
+    .AudioPlayer__playbed__playhead {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .38);
+        transform-origin: left;
+    }
+
+    .AudioPlayer__playbed__waveform {
+        width: 100%;
+        height: 140px;
+        background-image: image-url('Playbed.svg');
+    }
+
+    .AudioPlayer__advanced__metrics {
+        display: none;
+    }
+}
