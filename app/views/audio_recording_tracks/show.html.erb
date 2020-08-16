@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Session:</strong>
+  <%= @audio_recording_track.audio_recording.session.date %>
+</p>
+
+<p>
+  <strong>Recording:</strong>
+  <%= @audio_recording_track.audio_recording.name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @audio_recording_track.name %>
+</p>
+
+<p>
+  <strong>Audio File:</strong>
+  <%= @audio_recording_track.audio_file.filename %>
+</p>
+
+<%= link_to 'Edit', edit_audio_recording_track_path(@audio_recording_track) %> |
+<%= link_to 'Back', audio_recording_tracks_path %>

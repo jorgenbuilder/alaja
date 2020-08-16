@@ -7,8 +7,14 @@
 
   <h2><%= session.date.strftime("%B %d, %Y") %> Session</h2>
   <%= session.text_log %>
-  <% session.audio_files.all.each do |audio_file| %>
-    <%= react_component("AudioPlayerV2", {filename: audio_file.filename, url: audio_file.service_url}) %>
+  <% session.audio_recordings.all.each do |recording| %>
+    <%= react_component("AudioPlayerV3", {
+      name: recording.name,
+      tracks: recording.audio_recording_tracks.all.map{|track| {
+        name: track.name,
+        url: track.audio_file.service_url,
+      }}
+    }) %>
   <% end %>
 <% end %>
 

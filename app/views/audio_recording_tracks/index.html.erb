@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Audio Recording Tracks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Session</th>
+      <th>Recording</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @audio_recording_tracks.each do |audio_recording_track| %>
+      <tr>
+        <td><%= audio_recording_track.audio_recording.session.date %></td>
+        <td><%= audio_recording_track.audio_recording.name %></td>
+        <td><%= audio_recording_track.name %></td>
+        <td><%= link_to 'Show', audio_recording_track %></td>
+        <td><%= link_to 'Edit', edit_audio_recording_track_path(audio_recording_track) %></td>
+        <td><%= link_to 'Destroy', audio_recording_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Audio Recording Track', new_audio_recording_track_path %>

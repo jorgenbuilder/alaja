@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_09_230351) do
+ActiveRecord::Schema.define(version: 2020_08_15_192549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,19 @@ ActiveRecord::Schema.define(version: 2020_07_09_230351) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "audio_recordings", force: :cascade do |t|
-    t.datetime "date"
+  create_table "audio_recording_tracks", force: :cascade do |t|
     t.string "name"
-    t.string "text_log"
-    t.string "file_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "audio_recording_id"
+  end
+
+  create_table "audio_recordings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "session_id"
+    t.string "annotation"
   end
 
   create_table "band_names", force: :cascade do |t|

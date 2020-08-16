@@ -21,10 +21,36 @@
     <%= form.datetime_select :date %>
   </div>
   
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :audio_files %>
     <%= form.file_field :audio_files, multiple: true, direct_upload: true %>
-  </div>
+  </div> -->
+
+  <h2>Recordings</h2>
+  <% session.audio_recordings.each do |recording| %>
+    <%= form.fields_for recording do |audio_recording_form| %>
+      <div class="field">
+        <%= audio_recording_form.label :name %>
+        <%= audio_recording_form.text_field :name %>
+      </div>
+
+      <h3>Tracks</h3>
+      <% recording.audio_recording_tracks.each do |track| %>
+        <%= form.fields_for track do |audio_track_form| %>
+          <%= track.audio_file.filename %>
+          <div class="field">
+            <%= audio_track_form.label :name %>
+            <%= audio_track_form.text_field :name %>
+          </div>
+          <div class="field">
+            <%= audio_track_form.label :audio_files %>
+            <%= audio_track_form.file_field :audio_files, multiple: true, direct_upload: true %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <hr>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

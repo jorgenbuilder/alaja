@@ -69,6 +69,6 @@ class SessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def session_params
-      params.require(:session).permit(:text_log, :date, audio_files: [])
+      params.require(:session).permit(:text_log, :date, audio_recordings: [])
     end
 end

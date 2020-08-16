@@ -1,0 +1,2 @@
+module AudioRecordingTracksHelper
+end

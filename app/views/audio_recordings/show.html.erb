@@ -1,23 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @audio_recording.date %>
-</p>
-
-<p>
   <strong>Name:</strong>
   <%= @audio_recording.name %>
 </p>
 
 <p>
-  <strong>Text log:</strong>
-  <%= @audio_recording.text_log %>
-</p>
-
-<p>
-  <strong>File url:</strong>
-  <%= @audio_recording.file_url %>
+  <strong>Annotation:</strong>
+  <%= @audio_recording.annotation %>
 </p>
 
 <%= link_to 'Edit', edit_audio_recording_path(@audio_recording) %> |

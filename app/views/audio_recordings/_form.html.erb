@@ -12,28 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
-
-  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :text_log %>
-    <%= form.text_field :text_log %>
+    <%= form.label :session_id %>
+    <%= form.number_field :session_id %>
   </div>
 
   <div class="field">
-    <%= form.label :file_url %>
-    <%= form.text_field :file_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :audio_files %>
-    <%= form.file_field :audio_files, multiple: true %>
+    <%= form.label :annotation %>
+    <%= form.text_area :annotation %>
   </div>
 
   <div class="actions">

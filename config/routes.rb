@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :audio_recording_tracks
   resources :audio_recordings
   resources :band_names
   resources :songs
