@@ -32,7 +32,26 @@ const AudioPlayerV3 = (props) => {
 
     const [time, setTime] = React.useState('00:00:00.0');
 
-    const updateTime = setTime;
+    const clockFormat = (seconds, decimals=1) => {
+        var hours,
+            minutes,
+            secs,
+            result;
+    
+        hours = parseInt(seconds / 3600, 10) % 24;
+        minutes = parseInt(seconds / 60, 10) % 60;
+        secs = seconds % 60;
+        secs = secs.toFixed(decimals);
+    
+        result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (secs < 10 ? "0" + secs : secs);
+    
+        return result;
+    }
+
+    const updateTime = (time) => {
+        setTime(clockFormat(time));
+    };
+
     const seekAnnotation = (annotation) => {
         Player.current.ee.emit('play', annotation.start, annotation.end);
     };
@@ -85,7 +104,7 @@ const AudioPlayerV3 = (props) => {
                 <span className="btn-rewind btn btn-success"><i className="fa fa-fast-backward"></i></span>
                 <span className="btn-fast-forward btn btn-success"><i className="fa fa-fast-forward"></i></span>
                 </div>
-                <span className="audio-pos">{time}</span>
+                <span className="audio-pos">{time}</span> / {Player?.current ? clockFormat(Player.current.duration) : '00:00:00.0'}
             </div>
         </div>
         <div className="AudioPlayer v3" key={PlayerID} id={PlayerID}>
