@@ -24,4 +24,16 @@
     font-size: 12px;
 }
 
+.annotations-boxes {
+    display: none !important;
+}
+
+.annotation-play {
+    display: inline-block;
+
+    &:after {
+        content: 'Play';
+    }
+}
+
 // I don't know if I'll end up needing this.

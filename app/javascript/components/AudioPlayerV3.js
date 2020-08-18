@@ -26,19 +26,41 @@ const PlayerConfig = {
 const DefaultGain = 0.3;
 
 const AudioPlayerV3 = (props) => {
-    let Player = React.useRef();
-    let UUID = React.useRef(uuid());
-    let PlayerID = `player-${UUID.current}`;
+    const Player = React.useRef();
+    const UUID = React.useRef(uuid());
+    const PlayerID = `player-${UUID.current}`;
 
-    let [time, setTime] = React.useState('00:00:00.0');
+    const [time, setTime] = React.useState('00:00:00.0');
 
     const updateTime = setTime;
+    const seekAnnotation = (annotation) => {
+        Player.current.ee.emit('play', annotation.start, annotation.end);
+    };
 
     React.useEffect(() => {
-        let config = Object.assign({}, PlayerConfig, {
+        let annotation;
+        try {
+            annotation = JSON.parse(props.annotation);
+        } catch (e) {
+            annotation = false;
+        }
+        const annotationConfig = annotation ? {
+            annotationList: {
+                annotations: annotation,
+                editable: false,
+                linkEndpoints: false,
+                isContinuousPlay: false,
+                controls: [{
+                    class: 'annotation-play',
+                    title: '',
+                    action: seekAnnotation,
+                }],
+            }
+        } : {};
+        const config = Object.assign({}, PlayerConfig, {
             mono: props.tracks.length === 1,
             container: document.getElementById(PlayerID),
-        });
+        }, annotationConfig);
         Player.current = WaveformPlaylist(config, EventEmitter());
         Player.current.load(props.tracks.map(x => ({
             src: x.url,

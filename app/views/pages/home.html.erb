@@ -10,6 +10,7 @@
   <% session.audio_recordings.all.each do |recording| %>
     <%= react_component("AudioPlayerV3", {
       name: recording.name,
+      annotation: recording.annotation,
       tracks: recording.audio_recording_tracks.all.map{|track| {
         name: track.name,
         url: track.audio_file.service_url,
