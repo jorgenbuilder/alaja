@@ -31,6 +31,18 @@ const AudioPlayerV3 = (props) => {
     const PlayerID = `player-${UUID.current}`;
 
     const [time, setTime] = React.useState('00:00:00.0');
+    const [loaded, setLoaded] = React.useState(false);
+
+    const load = () => {
+        Player.current.load(props.tracks.map(x => ({
+            src: x.url,
+            name: x.name,
+            gain: DefaultGain,
+        }))).then(() => {
+            Player.current.ee.emit('play');
+        });
+        setLoaded(true);
+    }
 
     const clockFormat = (seconds, decimals=1) => {
         var hours,
@@ -81,15 +93,16 @@ const AudioPlayerV3 = (props) => {
             container: document.getElementById(PlayerID),
         }, annotationConfig);
         Player.current = WaveformPlaylist(config, EventEmitter());
-        Player.current.load(props.tracks.map(x => ({
-            src: x.url,
-            name: x.name,
-            gain: DefaultGain,
-        })))
         Player.current.ee.on("timeupdate", updateTime);
     }, []);
 
-    const handlePlay = () => Player.current.ee.emit('play')
+    const handlePlay = () => {
+        if (!loaded) {
+            load();
+        } else {
+            Player.current.ee.emit('play');
+        }
+    }
     const handlePause = () => Player.current.ee.emit('pause')
     const handleStop = () => Player.current.ee.emit('stop')
 
